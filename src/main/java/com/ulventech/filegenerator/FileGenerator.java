@@ -8,19 +8,19 @@ import java.util.Scanner;
 public class FileGenerator {
 
     public void generateFileAndUniqueStrings(int noOfLine, String filePath) {
-        byte[] bytes = new byte[100];
-        Arrays.fill(bytes, (byte) 'a');
+        byte[] uniqueCharacters = new byte[100];
+        Arrays.fill(uniqueCharacters, (byte) 'a');
 
-        try (FileOutputStream fileOutputStream = new FileOutputStream(filePath)) {
+        try (FileOutputStream outputStream = new FileOutputStream(filePath)) {
             for (int i = 0; i < noOfLine; i++) {
-                fileOutputStream.write(bytes);
-                fileOutputStream.write(new byte[]{'\r', '\n'});
+                outputStream.write(uniqueCharacters);
+                outputStream.write(new byte[]{'\r', '\n'});
                 for (int k = 0; k < 2; k++) {
-                    bytes[k]++;
-                    if (bytes[k] <= 'z') {
+                    uniqueCharacters[k] = (byte) (uniqueCharacters[k] + 1);
+                    if (uniqueCharacters[k] <= 'z') {
                         break;
                     } else {
-                        bytes[k] = 'a';
+                        uniqueCharacters[k] = 'a';
                     }
                 }
             }
