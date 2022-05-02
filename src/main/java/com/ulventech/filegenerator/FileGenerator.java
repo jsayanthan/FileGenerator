@@ -25,7 +25,7 @@ public class FileGenerator {
                 }
             }
         } catch (IOException e) {
-            System.out.printf("Exception occurred: " + e.getMessage());
+            System.err.println("Exception occurred: " + e.getMessage());
         }
     }
 
